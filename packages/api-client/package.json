@@ -1,0 +1,10 @@
+{
+  "name": "@app/api-client",
+  "type": "module",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@app/api": "workspace:^",
+    "hono": "^4.7.10"
+  }
+}

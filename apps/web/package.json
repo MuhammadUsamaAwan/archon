@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "@app/api-client": "workspace:^"
   },
   "devDependencies": {
     "@types/react": "^19.1.5",

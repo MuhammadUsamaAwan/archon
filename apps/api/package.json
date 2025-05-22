@@ -2,6 +2,7 @@
   "name": "@app/api",
   "type": "module",
   "version": "0.0.0",
+  "main": "src/app.ts",
   "scripts": {
     "dev": "bun run --watch src/app.ts",
     "build": "bun build src/app.ts --outfile ./dist/app --target bun --compile --minify-whitespace --minify-syntax"
