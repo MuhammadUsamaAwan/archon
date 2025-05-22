@@ -8,7 +8,7 @@
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": [],
+    "ignore": ["**/node_modules", "**/dist"],
     "attributePosition": "auto",
     "indentStyle": "space",
     "indentWidth": 2,
@@ -34,5 +34,17 @@
   },
   "organizeImports": {
     "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "ignore": ["**/node_modules", "**/dist"],
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "warn",
+        "useExhaustiveDependencies": "warn",
+        "noUnusedImports": "warn"
+      }
+    }
   }
 }

@@ -5,7 +5,9 @@
     "dev": "pnpm run -r --parallel --aggregate-output dev",
     "build": "pnpm run -r build",
     "format:check": "biome format",
-    "format:write": "biome format --write"
+    "format:write": "biome format --write",
+    "lint:check": "biome lint",
+    "lint:write": "biome lint --write"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
