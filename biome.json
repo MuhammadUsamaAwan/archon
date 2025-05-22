@@ -8,7 +8,7 @@
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": ["**/node_modules", "**/dist"],
+    "ignore": ["**/node_modules", "**/dist", "**/client"],
     "attributePosition": "auto",
     "indentStyle": "space",
     "indentWidth": 2,
@@ -37,7 +37,7 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": ["**/node_modules", "**/dist"],
+    "ignore": ["**/node_modules", "**/dist", "**/client"],
     "rules": {
       "recommended": true,
       "correctness": {
