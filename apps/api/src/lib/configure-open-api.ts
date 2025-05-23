@@ -1,10 +1,10 @@
 import { Scalar } from '@scalar/hono-api-reference';
-import type { Hono } from 'hono';
 import { openAPISpecs } from 'hono-openapi';
 
 import packageJSON from '../../package.json' with { type: 'json' };
+import type { createRouter } from './create-router';
 
-export function configureOpenApi(app: Hono) {
+export function configureOpenApi(app: ReturnType<typeof createRouter>) {
   app
     .get(
       '/openapi',

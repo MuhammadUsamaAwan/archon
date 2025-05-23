@@ -44,6 +44,9 @@
         "noUnusedVariables": "warn",
         "useExhaustiveDependencies": "warn",
         "noUnusedImports": "warn"
+      },
+      "complexity": {
+        "noStaticOnlyClass": "off"
       }
     }
   }

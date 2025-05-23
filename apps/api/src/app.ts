@@ -1,13 +1,14 @@
 import { serveStatic } from 'hono/bun';
+import { authRouter } from './features/auth/auth.router';
+import { taskRouter } from './features/task/task.router';
 import { configureOpenApi } from './lib/configure-open-api';
 import { createRouter } from './lib/create-router';
-import { route1 } from './routes';
 
 const app = createRouter();
 
 configureOpenApi(app);
 
-const routes = app.basePath('/api').route('/route1', route1).route('/route2', route1);
+const routes = app.basePath('/api').route('/auth', authRouter).route('/tasks', taskRouter);
 
 app.use('/assets/*', serveStatic({ root: './client' })).get('*', serveStatic({ path: './client/index.html' }));
 
