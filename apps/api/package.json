@@ -8,7 +8,12 @@
     "build": "bun build src/app.ts --outfile ./dist/app --target bun --compile --minify-whitespace --minify-syntax"
   },
   "dependencies": {
-    "hono": "^4.7.10"
+    "@hono/zod-validator": "^0.5.0",
+    "@scalar/hono-api-reference": "^0.9.1",
+    "hono": "^4.7.10",
+    "hono-openapi": "^0.4.8",
+    "zod": "^3.25.23",
+    "zod-openapi": "^4.2.4"
   },
   "devDependencies": {
     "bun-types": "^1.2.14"
