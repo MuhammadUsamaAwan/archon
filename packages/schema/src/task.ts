@@ -1,9 +1,10 @@
 import { z } from 'zod';
-import { stringSchema } from './validations';
+import { stringSchema, uuidSchema } from './validations';
 
 export const insertTaskSchema = z.object({
   title: stringSchema,
   description: stringSchema,
+  userId: uuidSchema,
 });
 
 export type InsertTaskSchema = z.infer<typeof insertTaskSchema>;
