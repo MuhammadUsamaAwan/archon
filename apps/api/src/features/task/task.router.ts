@@ -12,16 +12,16 @@ taskRouter
   .post('/', describeRoute({}), zValidator('json', insertTaskSchema), async c => {
     const body = c.req.valid('json');
     const userId = c.get('user').id;
-    return c.json(await TaskService.create(body, userId));
+    return c.json(await TaskService.create(c, body, userId));
   })
   .put('/:id', describeRoute({}), zValidator('json', insertTaskSchema), async c => {
     const id = c.req.param('id');
     const body = c.req.valid('json');
     const userId = c.get('user').id;
-    return c.json(await TaskService.update(id, body, userId));
+    return c.json(await TaskService.update(c, id, body, userId));
   })
   .delete('/:id', describeRoute({}), async c => {
     const id = c.req.param('id');
     const userId = c.get('user').id;
-    return c.json(await TaskService.delete(id, userId));
+    return c.json(await TaskService.delete(c, id, userId));
   });

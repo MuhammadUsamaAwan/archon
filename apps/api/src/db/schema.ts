@@ -31,19 +31,18 @@ export const tasksTable = pgTable('tasks', {
   ...audit,
 });
 
-export const userActivityLogs = pgTable(
+export const userActivityLogsTable = pgTable(
   'user_activity_logs',
   {
     id: uuid('id').primaryKey().defaultRandom(),
-    userId: uuid('user_id').references(() => usersTable.id),
     method: text('method').notNull(),
     path: text('path').notNull(),
-    userAgent: text('user_agent').notNull(),
-    ipAddress: text('ip_address').notNull(),
-    host: text('host').notNull(),
+    userAgent: text('user_agent'),
+    ipAddress: text('ip_address'),
+    host: text('host'),
     referer: text('referer'),
     changes: jsonb('changes').notNull(),
     ...audit,
   },
-  t => [index('user_activity_logs_user_id_idx').on(t.userId)]
+  t => [index('user_activity_logs_user_id_idx').on(t.createdById)]
 );
