@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { stringSchema, uuidSchema } from './validations';
 
 export const insertTaskSchema = z.object({
-  title: stringSchema,
+  name: stringSchema,
   description: stringSchema,
   userId: uuidSchema,
 });

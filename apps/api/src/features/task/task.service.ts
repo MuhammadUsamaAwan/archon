@@ -12,7 +12,7 @@ export class TaskService {
     const result = await db
       .select({
         id: tasksTable.id,
-        title: tasksTable.title,
+        name: tasksTable.name,
         description: tasksTable.description,
       })
       .from(tasksTable)
