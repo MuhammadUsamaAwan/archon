@@ -1,0 +1,8 @@
+{
+  "name": "@app/api-client",
+  "version": "0.0.0",
+  "dependencies": {
+    "@app/api": "workspace:^",
+    "hono": "^4.7.11"
+  }
+}
