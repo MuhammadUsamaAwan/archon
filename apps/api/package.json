@@ -1,5 +1,15 @@
 {
   "name": "@app/api",
   "version": "0.0.0",
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch src/app.ts",
+    "build": "bun build src/app.ts --outfile ./dist/server.js --target bun --minify-whitespace --minify-syntax"
+  },
+  "dependencies": {
+    "hono": "^4.7.11"
+  },
+  "devDependencies": {
+    "bun-types": "^1.2.15"
+  }
 }

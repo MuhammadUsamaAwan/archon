@@ -5,6 +5,7 @@
     "jsx": "react-jsx",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "noEmit": true,
+    "baseUrl": ".",
     "paths": {
       "@/web/*": ["./src/*"]
     }
