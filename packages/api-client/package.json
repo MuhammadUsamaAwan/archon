@@ -1,7 +1,12 @@
 {
   "name": "@app/api-client",
   "version": "0.0.0",
-  "main": "src/index.ts",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rm -rf dist && tsc"
+  },
   "dependencies": {
     "@app/api": "workspace:*",
     "hono": "^4.7.11"
