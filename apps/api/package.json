@@ -8,9 +8,14 @@
     "build": "bun build src/app.ts --outfile ./dist/server.js --target bun --minify-whitespace --minify-syntax"
   },
   "dependencies": {
-    "hono": "^4.7.11"
+    "drizzle-orm": "^0.44.1",
+    "hono": "^4.7.11",
+    "pg": "^8.16.0",
+    "@app/schema": "workspace:*"
   },
   "devDependencies": {
-    "bun-types": "^1.2.15"
+    "@types/pg": "^8.15.4",
+    "bun-types": "^1.2.15",
+    "drizzle-kit": "^0.31.1"
   }
 }
