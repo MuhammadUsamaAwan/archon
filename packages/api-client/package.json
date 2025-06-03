@@ -1,8 +1,12 @@
 {
   "name": "@app/api-client",
   "version": "0.0.0",
+  "main": "src/index.ts",
   "dependencies": {
-    "@app/api": "workspace:^",
+    "@app/api": "workspace:*",
     "hono": "^4.7.11"
+  },
+  "devDependencies": {
+    "bun-types": "^1.2.15"
   }
 }

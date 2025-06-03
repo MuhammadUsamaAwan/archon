@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "types": ["bun-types"],
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@/api/*": ["./src/*"]
     }
