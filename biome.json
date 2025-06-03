@@ -41,7 +41,8 @@
         "noUnusedImports": "warn"
       },
       "style": {
-        "useImportType": "warn"
+        "useImportType": "warn",
+        "noNonNullAssertion": "off"
       },
       "nursery": {
         "useSortedClasses": {
