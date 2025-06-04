@@ -1,9 +1,9 @@
 import { z } from 'zod';
 import { TASK_STATUSES_ARRAY } from './constants';
-import { emailSchema, enumSchema, passwordSchema, uuidSchema } from './validations';
+import { enumSchema, passwordSchema, stringSchema, uuidSchema } from './validations';
 
 export const taskSchema = z.object({
-  title: emailSchema,
+  title: stringSchema,
   description: passwordSchema,
   status: enumSchema(TASK_STATUSES_ARRAY),
   userId: uuidSchema,
