@@ -5,7 +5,12 @@
   "main": "src/app.ts",
   "scripts": {
     "dev": "bun run --watch src/app.ts",
-    "build": "bun build src/app.ts --outfile ./dist/server.js --target bun --minify-whitespace --minify-syntax"
+    "build": "bun build src/app.ts --outfile ./dist/server.js --target bun --minify-whitespace --minify-syntax",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "bun src/db/seed.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.44.1",
