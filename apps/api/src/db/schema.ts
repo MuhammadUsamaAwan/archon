@@ -1,5 +1,5 @@
-import { TASK_STATUSES_ARRAY } from '@app/schema';
-import { pgEnum, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { ACTIONS_ARRAY, TASK_STATUSES_ARRAY } from '@app/schema';
+import { pgEnum, pgTable, primaryKey, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 
 const audit = {
   createdAt: timestamp('created_at').notNull().defaultNow(),
@@ -14,6 +14,7 @@ export const usersTable = pgTable('users', {
   id: uuid('id').defaultRandom().primaryKey(),
   email: text('email').notNull().unique(),
   name: text('name').notNull(),
+  password: text('password').notNull(),
   ...audit,
 });
 
@@ -24,6 +25,49 @@ export const tasksTable = pgTable('tasks', {
   title: text('title').notNull(),
   description: text('description'),
   status: taskStatusEnum('status').notNull(),
-  userId: uuid('user_id').notNull().references(() => usersTable.id),
+  userId: uuid('user_id')
+    .notNull()
+    .references(() => usersTable.id),
   ...audit,
 });
+
+export const rolesTable = pgTable('roles', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  name: text('name').notNull().unique(),
+  ...audit,
+});
+
+export const actionEnum = pgEnum('action_enum', ACTIONS_ARRAY);
+
+export const permissionsTable = pgTable('permissions', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  action: actionEnum('action').notNull(),
+  resource: text('name').notNull().unique(),
+  ...audit,
+});
+
+export const userRolesTable = pgTable(
+  'user_roles',
+  {
+    userId: uuid('user_id')
+      .notNull()
+      .references(() => usersTable.id),
+    roleId: uuid('role_id')
+      .notNull()
+      .references(() => rolesTable.id),
+  },
+  t => [primaryKey({ columns: [t.userId, t.roleId] })]
+);
+
+export const rolePermissionsTable = pgTable(
+  'role_permissions',
+  {
+    roleId: uuid('role_id')
+      .notNull()
+      .references(() => rolesTable.id),
+    permissionId: uuid('permission_id')
+      .notNull()
+      .references(() => permissionsTable.id),
+  },
+  t => [primaryKey({ columns: [t.roleId, t.permissionId] })]
+);
