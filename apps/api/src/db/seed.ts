@@ -1,14 +1,51 @@
+import { ACTIONS_ARRAY } from '@app/schema';
 import { db } from '.';
-import { usersTable } from './schema';
+import { permissionsTable, rolePermissionsTable, rolesTable, userRolesTable, usersTable } from './schema';
 
 async function main() {
-  console.log('Seeding user...');
   const hashedPassword = await Bun.password.hash('superadmin', { algorithm: 'bcrypt' });
-  await db.insert(usersTable).values({
-    email: 'admin@test.com',
-    name: 'Super Admin',
-    password: hashedPassword,
+
+  const [superAdminUser] = await db
+    .insert(usersTable)
+    .values({
+      email: 'admin@test.com',
+      name: 'Super Admin',
+      password: hashedPassword,
+    })
+    .returning({ id: usersTable.id });
+
+  const [superAdminRole] = await db
+    .insert(rolesTable)
+    .values({
+      name: 'superadmin',
+    })
+    .returning({ id: rolesTable.id });
+
+  await db.insert(userRolesTable).values({
+    userId: superAdminUser.id,
+    roleId: superAdminRole.id,
   });
+
+  const resources = ['user', 'task'];
+
+  const permissions = await db
+    .insert(permissionsTable)
+    .values(
+      resources.flatMap(resource =>
+        ACTIONS_ARRAY.map(action => ({
+          action,
+          resource,
+        }))
+      )
+    )
+    .returning({ id: permissionsTable.id });
+
+  await db.insert(rolePermissionsTable).values(
+    permissions.map(permission => ({
+      roleId: superAdminRole.id,
+      permissionId: permission.id,
+    }))
+  );
 }
 
 const startTime = Date.now();

@@ -33,7 +33,7 @@ export const tasksTable = pgTable('tasks', {
 
 export const rolesTable = pgTable('roles', {
   id: uuid('id').defaultRandom().primaryKey(),
-  name: text('name').notNull().unique(),
+  name: text('name').notNull(),
   ...audit,
 });
 
@@ -42,7 +42,7 @@ export const actionEnum = pgEnum('action_enum', ACTIONS_ARRAY);
 export const permissionsTable = pgTable('permissions', {
   id: uuid('id').defaultRandom().primaryKey(),
   action: actionEnum('action').notNull(),
-  resource: text('name').notNull().unique(),
+  resource: text('name').notNull(),
   ...audit,
 });
 
@@ -55,6 +55,7 @@ export const userRolesTable = pgTable(
     roleId: uuid('role_id')
       .notNull()
       .references(() => rolesTable.id),
+    ...audit,
   },
   t => [primaryKey({ columns: [t.userId, t.roleId] })]
 );
@@ -68,6 +69,7 @@ export const rolePermissionsTable = pgTable(
     permissionId: uuid('permission_id')
       .notNull()
       .references(() => permissionsTable.id),
+    ...audit,
   },
   t => [primaryKey({ columns: [t.roleId, t.permissionId] })]
 );
