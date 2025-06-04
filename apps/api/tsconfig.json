@@ -4,7 +4,7 @@
     "types": ["bun-types"],
     "baseUrl": ".",
     "paths": {
-      "@/api/*": ["./src/*"]
+      "~/api/*": ["./src/*"]
     }
   },
   "include": ["src", "drizzle.config.ts"]

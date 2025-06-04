@@ -1,8 +1,14 @@
-import { Hono } from 'hono';
+import { configureOpenAPI } from './lib/configure-open-api';
+import { createRouter } from './lib/create-router';
+import { onError } from './middlewares/on-error';
+import { registerRoutes } from './routes';
 
-const app = new Hono();
-const routes = app.get('/', c => c.json({ message: 'Hello from API!' }));
+const app = createRouter();
 
-export type AppType = typeof routes;
+configureOpenAPI(app);
+
+app.onError(onError);
+
+registerRoutes(app);
 
 export default app;

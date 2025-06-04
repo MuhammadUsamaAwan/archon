@@ -1,4 +1,4 @@
-import type { AppType } from '@app/api';
+import type { Routes } from '@app/api/routes';
 import { hc } from 'hono/client';
 
-export const apiClient = hc<AppType>('');
+export const apiClient = hc<Routes>('');

@@ -4,7 +4,10 @@
     "types": ["bun-types"],
     "rootDir": "src",
     "outDir": "dist",
-    "declaration": true
+    "declaration": true,
+    "paths": {
+      "~/api/*": ["../../apps/api/src/*"]
+    }
   },
   "include": ["src"]
 }
