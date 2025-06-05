@@ -6,7 +6,7 @@ import type { createRouter } from './create-router';
 export function configureOpenAPI(app: ReturnType<typeof createRouter>) {
   app
     .get(
-      '/openapi',
+      '/api/openapi',
       openAPISpecs(app, {
         documentation: {
           info: {
@@ -32,9 +32,9 @@ export function configureOpenAPI(app: ReturnType<typeof createRouter>) {
       })
     )
     .get(
-      '/docs',
+      '/api/docs',
       Scalar({
-        url: '/openapi',
+        url: '/api/openapi',
       })
     );
 }
